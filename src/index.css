@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4c4949;
+}
+
+.todolist {
+  padding: 20px;
+  border: 1px solid #fff;
+  background-color: #678ab8;
+  border-radius: 20px;
+}
