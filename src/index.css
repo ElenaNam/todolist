@@ -26,3 +26,11 @@ code {
   background-color: #678ab8;
   border-radius: 20px;
 }
+
+.btn-delete {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  font-size: 12px;
+}

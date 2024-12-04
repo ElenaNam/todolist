@@ -20,6 +20,7 @@ export const Todolist = ({ title, tasks }: TodolistPropsType) => {
 			<li key={item.id}>
 				<input type="checkbox" checked={item.isDone} />{" "}
 				<span>{item.title}</span>
+				<button className="btn-delete">X</button>
 			</li>
 			))}
 		</ul>
