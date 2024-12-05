@@ -33,4 +33,15 @@ code {
   background-color: transparent;
   color: #fff;
   font-size: 12px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.btn-delete:hover {
+  background-color: #fff;
+  color: #678ab8;
+}
+
+.btn-delete:active {
+  transform: scale(.95);
 }

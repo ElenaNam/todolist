@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Todolist } from './Todolist';
 
@@ -12,7 +12,7 @@ function App() {
     //BLL
     const todolistTitle_1 = "What to learn 1"
 
-    const tasks_1: TaskType[]  = [
+    const [tasks, setTasks] = useState<TaskType[]>([
         {
             id: 0,
             title: "HTML&CSS", 
@@ -33,13 +33,17 @@ function App() {
             title: "Styled Components", 
             isDone: true
         },
-    ]
+    ]);
 
+    const removeTask = (id:number) => {
+        const FilteredTasks = tasks.filter(task => task.id !== id);
+        setTasks(FilteredTasks);
+    }
 
     //UI
     return (
         <div className="App">
-            < Todolist title={todolistTitle_1}  tasks={tasks_1} />
+            < Todolist title={todolistTitle_1}  tasks={tasks} removeTask={removeTask} />
         </div>
     );
 }

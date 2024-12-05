@@ -7,9 +7,10 @@ import { FilterButtons } from "./FilterButtons";
 type TodolistPropsType = {
   title: string;
   tasks: TaskType[];
+  removeTask: (id: number) => void;
 };
 
-export const Todolist = ({ title, tasks }: TodolistPropsType) => {
+export const Todolist = ({ title, tasks, removeTask }: TodolistPropsType) => {
 	//условный рендеринг
 	const tasksList =
 	tasks.length === 0 ? (
@@ -20,7 +21,7 @@ export const Todolist = ({ title, tasks }: TodolistPropsType) => {
 			<li key={item.id}>
 				<input type="checkbox" checked={item.isDone} />{" "}
 				<span>{item.title}</span>
-				<button className="btn-delete">X</button>
+				<button className="btn-delete" onClick={() => removeTask(item.id)}>X</button>
 			</li>
 			))}
 		</ul>
