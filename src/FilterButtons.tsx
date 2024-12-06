@@ -1,13 +1,15 @@
 import React from "react";
 import { Button } from "./Button";
 
-type FilterButtonsPropsType = {};
-export const FilterButtons = ({}: FilterButtonsPropsType) => {
+type FilterButtonsPropsType = {
+	changeFilter: () => void;
+};
+export const FilterButtons = ({changeFilter}: FilterButtonsPropsType) => {
   return (
 	<div>
-		<Button title="All" />
-		<Button title="Active" />
-		<Button title="Completed" />
+		<Button title="All" onClick={() => changeFilter()} />
+		<Button title="Active" onClick={() => changeFilter()} />
+		<Button title="Completed" onClick={() => changeFilter()} />
 	</div>
   );
 };

@@ -8,9 +8,10 @@ type TodolistPropsType = {
   title: string;
   tasks: TaskType[];
   removeTask: (id: number) => void;
+  changeFilter: () => void;
 };
 
-export const Todolist = ({ title, tasks, removeTask }: TodolistPropsType) => {
+export const Todolist = ({ title, tasks, removeTask, changeFilter }: TodolistPropsType) => {
 	//условный рендеринг
 	const tasksList =
 	tasks.length === 0 ? (
@@ -32,7 +33,7 @@ export const Todolist = ({ title, tasks, removeTask }: TodolistPropsType) => {
 		<TodolistHeader title={title}/>
 		<AddForm />
 		{tasksList}
-		<FilterButtons />
+		<FilterButtons changeFilter={changeFilter} />
 	</div>
   );
 };

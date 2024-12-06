@@ -40,10 +40,14 @@ function App() {
         setTasks(FilteredTasks);
     }
 
+    const changeFilter = () => {
+        console.log('changeFilter')
+    }
+
     //UI
     return (
         <div className="App">
-            < Todolist title={todolistTitle_1}  tasks={tasks} removeTask={removeTask} />
+            < Todolist title={todolistTitle_1}  tasks={tasks} removeTask={removeTask} changeFilter={changeFilter} />
         </div>
     );
 }
