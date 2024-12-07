@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskType } from "./App";
+import { FilterValueType, TaskType } from "./App";
 import { TodolistHeader } from "./TodolistHeader";
 import { AddForm } from "./AddForm";
 import { FilterButtons } from "./FilterButtons";
@@ -8,7 +8,7 @@ type TodolistPropsType = {
   title: string;
   tasks: TaskType[];
   removeTask: (id: number) => void;
-  changeFilter: () => void;
+  changeFilter: (value: FilterValueType) => void;
 };
 
 export const Todolist = ({ title, tasks, removeTask, changeFilter }: TodolistPropsType) => {
