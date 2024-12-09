@@ -37,8 +37,7 @@ button:focus-visible {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background-color: #4c4949; */
-	background: url(https://i.pinimg.com/originals/fd/a5/ca/fda5ca43b931c009c07e97e652a24ad7.png) no-repeat center/cover;
+	background: rgba(0, 0, 0, .7) url(https://i.pinimg.com/originals/fd/a5/ca/fda5ca43b931c009c07e97e652a24ad7.png) no-repeat center/cover;
 	z-index: 1;
 }
 
@@ -85,7 +84,6 @@ input:focus-visible {
 .todolist {
 	padding: 20px;
 	border: 1px solid #fff;
-	/* background-color: #678ab8; */
 	background-color: rgba(22, 28, 32, 0.8);
 	border-radius: 20px;
 	z-index: 2;

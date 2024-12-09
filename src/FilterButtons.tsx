@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "./Button";
-import { FilterValueType } from "./App";
+import { FilterValuesType } from "./App";
 
 type FilterButtonsPropsType = {
-	changeFilter: (value: FilterValueType) => void;
+	changeFilter: (value: FilterValuesType) => void;
 };
 export const FilterButtons = ({changeFilter}: FilterButtonsPropsType) => {
   return (
