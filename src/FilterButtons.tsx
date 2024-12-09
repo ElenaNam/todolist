@@ -8,9 +8,9 @@ type FilterButtonsPropsType = {
 export const FilterButtons = ({changeFilter}: FilterButtonsPropsType) => {
   return (
 	<div className="flex-wrapper">
-		<Button title="All" onClick={() => changeFilter('all')} className="btn-primary" />
-		<Button title="Active" onClick={() => changeFilter('active')} className="btn-primary" />
-		<Button title="Completed" onClick={() => changeFilter('completed')} className="btn-primary" />
+		<Button title="All" onClickHandler={() => changeFilter('all')} className="btn-primary" />
+		<Button title="Active" onClickHandler={() => changeFilter('active')} className="btn-primary" />
+		<Button title="Completed" onClickHandler={() => changeFilter('completed')} className="btn-primary" />
 	</div>
   );
 };

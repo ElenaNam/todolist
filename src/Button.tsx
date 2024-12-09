@@ -2,10 +2,10 @@ import React from "react";
 
 type ButtonPropsType = {
 	title: string;
-	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+	onClickHandler?: React.MouseEventHandler<HTMLButtonElement>;
 	className?: string
 };
 
-export const Button = ({ title, onClick, className }: ButtonPropsType) => {
-	return <button onClick={onClick} className={className}>{title}</button>;
+export const Button = ({ title, onClickHandler, className }: ButtonPropsType) => {
+	return <button onClick={onClickHandler} className={className}>{title}</button>;
 };
