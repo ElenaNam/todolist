@@ -4,7 +4,7 @@ import { FilterValuesType, TaskType } from './App';
 
 type TasksPropsType = {
 	tasks: TaskType[]
-	removeTask: (id: number) => void;
+	removeTask: (id: string) => void;
 	status: FilterValuesType
 }
 
@@ -19,7 +19,7 @@ export const Tasks = ({tasks, removeTask, status} : TasksPropsType) => {
 	) : (
 		<ul className="todolist__items">
 			{tasks.map((item) => (
-			<li key={item.id} className="todolist__item">
+			<li key={item.id} className="todolist__item" data-id={item.id}>
 				<div className="todolist__item-label">
 					<input type="checkbox" id={`${item.id}`} checked={item.isDone} aria-label={item.isDone ? 'Выполнено' : 'Активно'} />{" "}
 					<label htmlFor={`${item.id}`} className="todolist__label">{item.title}</label>
