@@ -6,22 +6,21 @@ import { FilterButtons } from "./FilterButtons";
 import { Tasks } from "./Tasks";
 
 type TodolistPropsType = {
-  title: string
-  tasks: TaskType[]
-  removeTask: (id: number) => void
-  changeFilter: (value: FilterValuesType) => void
-  status: FilterValuesType
+	title: string
+	tasks: TaskType[]
+	removeTask: (id: number) => void
+	addTask: () => void
+	changeFilter: (value: FilterValuesType) => void
+	status: FilterValuesType
 };
 
-export const Todolist = ({ title, tasks, removeTask, changeFilter, status }: TodolistPropsType) => {
-
-
-  return (
-	<div className="todolist">
-		<TodolistHeader title={title}/>
-		<AddForm />
-		<Tasks tasks={tasks} status={status} removeTask={removeTask} />
-		<FilterButtons changeFilter={changeFilter} />
-	</div>
-  );
+export const Todolist = ({ title, tasks, removeTask, addTask, changeFilter, status }: TodolistPropsType) => {
+	return (
+		<div className="todolist">
+			<TodolistHeader title={title}/>
+			<AddForm addTask={addTask} />
+			<Tasks tasks={tasks} status={status} removeTask={removeTask} />
+			<FilterButtons changeFilter={changeFilter} />
+		</div>
+	);
 };

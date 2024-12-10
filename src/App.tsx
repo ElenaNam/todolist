@@ -44,6 +44,10 @@ function App() {
 		setTasks(filteredTasks);
 	}
 
+	const addTask = () => {
+		console.log('add task')
+	}
+
 	const changeFilter = (value: FilterValuesType) => {
 		setFilter(value);
 	}
@@ -65,6 +69,7 @@ function App() {
 			title={todolistTitle_1} 
 			tasks={tasksForTodoList} 
 			removeTask={removeTask} 
+			addTask={addTask}
 			changeFilter={changeFilter} 
 			status={filter}
 			/>
