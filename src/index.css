@@ -23,12 +23,18 @@ ul {
 
 button {
 	font-family: inherit;
+	font-size: 1rem;
 	cursor: pointer;
 	transition: .3s;
 }
 
 button:focus-visible {
 	outline: 1px solid #e87d00;
+}
+
+button[disabled] {
+	opacity: .5;
+	cursor: default;
 }
 
 .App {
@@ -59,6 +65,7 @@ button:focus-visible {
 
 h3 {
 	margin: 0 0 15px;
+	font-size: 1.2rem;
 	color: #f1f1f1;
 }
 
@@ -67,6 +74,7 @@ input {
 	overflow: hidden;
 	border-radius: 4px;
 	border: 1px solid #e87d00;
+	font-size: .9rem;
 	color: #000;
 	transition: .3s;
 }
@@ -82,11 +90,17 @@ input:focus-visible {
 }
 
 .todolist {
+	max-width: 300px;
+	width: 100%;
 	padding: 20px;
 	border: 1px solid #fff;
 	background-color: rgba(22, 28, 32, 0.8);
 	border-radius: 20px;
 	z-index: 2;
+}
+
+.todolist__wrapper {
+	max-width: 250px;
 }
 
 .todolist__msg {
@@ -107,8 +121,19 @@ input:focus-visible {
 	display: flex;
 	gap: 5px;
 	align-items: flex-start;
-	justify-content: space-between;
 	line-height: 1;
+}
+
+.todolist__item .btn-delete {
+	color: transparent;
+}
+
+.todolist__item:hover .todolist__label {
+	color: #f1f1f1;
+}
+
+.todolist__item:hover .btn-delete {
+	color: #90bcf5;
 }
 
 .todolist__item-label input {
@@ -136,6 +161,8 @@ input:focus-visible {
 	align-items: flex-start;
 	gap: 7px;
 	color: #e87d00;
+	font-size: 1rem;
+	transition: .3s;
 }
 
 .todolist__label:before {
@@ -168,8 +195,7 @@ input:focus-visible {
 	background-color: transparent;
 	border: none;
 	color: #90bcf5;
-	font-size: 14px;
-	transition: 0.5s;
+	font-size: .88rem;
 }
 
 .btn-delete:hover {
@@ -185,8 +211,7 @@ input:focus-visible {
 	border-radius: 4px;
 	border: 1px solid #e87d00;
 	background-color: #fff;
-
 	color: #000;
-	font-size: 14px;
+	font-size: .95rem;
 }
 
