@@ -4,8 +4,9 @@ type ButtonPropsType = {
 	title: string;
 	onClickHandler?: React.MouseEventHandler<HTMLButtonElement>;
 	className?: string
+	disabled?: boolean
 };
 
-export const Button = ({ title, onClickHandler, className }: ButtonPropsType) => {
-	return <button onClick={onClickHandler} className={className}>{title}</button>;
+export const Button = ({ title, onClickHandler, className, disabled }: ButtonPropsType) => {
+	return <button onClick={onClickHandler} className={className} disabled={disabled}>{title}</button>;
 };

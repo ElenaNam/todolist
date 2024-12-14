@@ -13,7 +13,7 @@ export type FilterValuesType = 'all' | 'active' | 'completed'
 
 function App() {
 	//BLL
-	const todolistTitle_1 = "What to learn 1"
+	const todolistTitle_1 = "What to learn 1";
 
 	const [tasks, setTasks] = useState<TaskType[]>([
 		{
@@ -46,8 +46,13 @@ function App() {
 	}
 
 	const addTask = (task: TaskType) => {
-		console.log('add task')
-		setTasks([...tasks, task])
+		console.log('add task');
+		setTasks([...tasks, task]);
+	}
+
+	const changeStatus = (id: string) => {
+		const newTasks = tasks.map((item: TaskType) => item.id === id ? {...item, isDone: !item.isDone} : item);
+		setTasks(newTasks);
 	}
 
 	const changeFilter = (value: FilterValuesType) => {
@@ -68,12 +73,13 @@ function App() {
 	return (
 		<div className="App">
 			< Todolist 
-			title={todolistTitle_1} 
-			tasks={tasksForTodoList} 
-			removeTask={removeTask} 
-			addTask={addTask}
-			changeFilter={changeFilter} 
-			status={filter}
+				title={todolistTitle_1} 
+				tasks={tasksForTodoList} 
+				changeStatus={changeStatus}
+				removeTask={removeTask} 
+				addTask={addTask}
+				changeFilter={changeFilter} 
+				status={filter}
 			/>
 		</div>
 	);

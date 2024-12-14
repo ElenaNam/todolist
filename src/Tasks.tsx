@@ -5,10 +5,11 @@ import { FilterValuesType, TaskType } from './App';
 type TasksPropsType = {
 	tasks: TaskType[]
 	removeTask: (id: string) => void;
+	changeStatus: (id: string) => void;
 	status: FilterValuesType
 }
 
-export const Tasks = ({tasks, removeTask, status} : TasksPropsType) => {
+export const Tasks = ({tasks, removeTask, status, changeStatus} : TasksPropsType) => {
 	let msg = "Your todolist is empty";
 	if (tasks.length === 0 && status === "active") msg = "No active tasks"
 	if (tasks.length === 0 && status === "completed") msg = "No completed tasks"
@@ -21,8 +22,18 @@ export const Tasks = ({tasks, removeTask, status} : TasksPropsType) => {
 			{tasks.map((item) => (
 			<li key={item.id} className="todolist__item" data-id={item.id}>
 				<div className="todolist__item-label">
-					<input type="checkbox" id={`${item.id}`} checked={item.isDone} aria-label={item.isDone ? 'Выполнено' : 'Активно'} />{" "}
-					<label htmlFor={`${item.id}`} className="todolist__label">{item.title}</label>
+					<input 
+						type="checkbox" 
+						id={`${item.id}`} 
+						checked={item.isDone} 
+						onChange={() => changeStatus(item.id)}
+						aria-label={item.isDone ? 'Выполнено' : 'Активно'} 
+					/>
+					{" "}
+					<label 
+						htmlFor={`${item.id}`} 
+						className="todolist__label"
+					>{item.title}</label>
 				</div>
 				<Button title='X' onClickHandler={() => removeTask(item.id)} className="btn-delete" />
 			</li>

@@ -11,16 +11,19 @@ type TodolistPropsType = {
 	removeTask: (id: string) => void
 	addTask: (task: TaskType) => void
 	changeFilter: (value: FilterValuesType) => void
+	changeStatus: (id: string) => void
 	status: FilterValuesType
 };
 
-export const Todolist = ({ title, tasks, removeTask, addTask, changeFilter, status }: TodolistPropsType) => {
+export const Todolist = ({ title, tasks, removeTask, addTask, changeFilter, status, changeStatus }: TodolistPropsType) => {
 	return (
 		<div className="todolist">
-			<TodolistHeader title={title}/>
-			<AddForm addTask={addTask} />
-			<Tasks tasks={tasks} status={status} removeTask={removeTask} />
-			<FilterButtons changeFilter={changeFilter} />
+			<div className="todolist__wrapper">
+				<TodolistHeader title={title}/>
+				<AddForm addTask={addTask} />
+				<Tasks tasks={tasks} status={status} removeTask={removeTask}changeStatus={changeStatus}/>
+				<FilterButtons changeFilter={changeFilter} />
+			</div>
 		</div>
 	);
 };
