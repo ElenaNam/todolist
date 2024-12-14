@@ -45,8 +45,9 @@ function App() {
 		setTasks(filteredTasks);
 	}
 
-	const addTask = () => {
+	const addTask = (task: TaskType) => {
 		console.log('add task')
+		setTasks([...tasks, task])
 	}
 
 	const changeFilter = (value: FilterValuesType) => {
