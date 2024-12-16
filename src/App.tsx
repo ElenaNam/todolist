@@ -45,9 +45,13 @@ function App() {
 		setTasks(filteredTasks);
 	}
 
-	const addTask = (task: TaskType) => {
-		console.log('add task');
-		setTasks([...tasks, task]);
+	const addTask = (title: string) => {
+		const newTask: TaskType = {
+			id: v1(),
+			title: title,
+			isDone: false
+		}
+		setTasks([newTask, ...tasks]);
 	}
 
 	const changeStatus = (id: string) => {
