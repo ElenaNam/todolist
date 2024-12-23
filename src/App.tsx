@@ -38,13 +38,9 @@ function App() {
 		},
 	]);
 
-	const [filter, setFilter] = useState<FilterValuesType>('all');
+	//CRUD logic
 
-	const removeTask = (id:string) => {
-		const filteredTasks = tasks.filter(task => task.id !== id);
-		setTasks(filteredTasks);
-	}
-
+	//C - create
 	const addTask = (title: string) => {
 		const newTask: TaskType = {
 			id: v1(),
@@ -54,10 +50,20 @@ function App() {
 		setTasks([newTask, ...tasks]);
 	}
 
-	const changeStatus = (id: string) => {
+	//U - update
+	const changeStatus = (id: string, newStatus: boolean) => {
 		const newTasks = tasks.map((item: TaskType) => item.id === id ? {...item, isDone: !item.isDone} : item);
 		setTasks(newTasks);
 	}
+
+	//D - delete
+	const removeTask = (id:string) => {
+		const filteredTasks = tasks.filter(task => task.id !== id);
+		setTasks(filteredTasks);
+	}
+
+	//GUI R - read
+	const [filter, setFilter] = useState<FilterValuesType>('all');
 
 	const changeFilter = (value: FilterValuesType) => {
 		setFilter(value);

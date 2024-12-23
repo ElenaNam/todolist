@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./Button";
 
 type AddFormPropsType = {
 	addTask: (title: string) => void
 };
-export const AddForm = ({addTask}: AddFormPropsType) => {
 
-	const [inputValue, setInputValue] = React.useState<string>('')
+
+export const AddForm = ({addTask}: AddFormPropsType) => {
+	const [inputValue, setInputValue] = useState<string>('')
+	//const [error, setError] = useState<string | null>(null)
 
 	const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-		let value = e.currentTarget.value;
-		setInputValue(value);
+		//error && setError(null)
+		setInputValue(e.currentTarget.value);
 	}
 
 	const handleKeyDownPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if(inputValue && isAddTaskPossible) {
-			e.key === 'Enter' && addTask(e.currentTarget.value)
+			if(e.key === 'Enter') {
+				addTask(e.currentTarget.value)
+				setInputValue('');
+			}
 		}
 	}
 
 	const handleClick = () => {
-		if(inputValue) {
-			addTask(inputValue);
-			setInputValue('');
-		} 
+		//error && setError(null)
+		const trimmedTitle = inputValue.trim();
+		if(trimmedTitle) {
+			addTask(trimmedTitle);
+		} else {
+			//setError('Task title is required')
+		}
+		setInputValue('');
 	}
 
 	const isAddTaskPossible = inputValue.length <= 15

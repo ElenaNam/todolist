@@ -86,6 +86,7 @@ input:focus-visible {
 
 .addform {
 	position: relative;
+	padding-bottom: 15px;
 }
 
 .addform__flex-wrapper {
@@ -144,7 +145,7 @@ input:focus-visible {
 }
 
 .todolist__items {
-	margin: 40px 0 30px;
+	margin: 20px 0 30px;
 	display: flex;
 	flex-direction: column;
 	gap: 7px;
@@ -220,6 +221,11 @@ input:focus-visible {
 	transition: .3s;
 }
 
+.task-done {
+	opacity: .5;
+	text-decoration: line-through;
+}
+
 /* Buttons */
 
 .btn-delete {
@@ -249,5 +255,11 @@ input:focus-visible {
 	background-color: #fff;
 	color: #000;
 	font-size: .95rem;
+}
+
+.btn-primary.active {
+	/*outline: 2px solid #e87d00;*/
+	background-color: #ffffff2e;
+	color: #fff;
 }
 

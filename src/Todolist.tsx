@@ -11,7 +11,7 @@ type TodolistPropsType = {
 	removeTask: (id: string) => void
 	addTask: (title: string) => void
 	changeFilter: (value: FilterValuesType) => void
-	changeStatus: (id: string) => void
+	changeStatus: (id: string, newStatus: boolean) => void
 	status: FilterValuesType
 };
 
@@ -20,9 +20,16 @@ export const Todolist = ({ title, tasks, removeTask, addTask, changeFilter, stat
 		<div className="todolist">
 			<div className="todolist__wrapper">
 				<TodolistHeader title={title}/>
-				<AddForm addTask={addTask} />
-				<Tasks tasks={tasks} status={status} removeTask={removeTask}changeStatus={changeStatus}/>
-				<FilterButtons changeFilter={changeFilter} />
+				<AddForm 
+					addTask={addTask} 
+				/>
+				<Tasks 
+					tasks={tasks} 
+					status={status} 
+					removeTask={removeTask} 
+					changeStatus={changeStatus}
+				/>
+				<FilterButtons status={status} changeFilter={changeFilter} />
 			</div>
 		</div>
 	);

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Button } from './Button';
 import { FilterValuesType, TaskType } from './App';
 
 type TasksPropsType = {
 	tasks: TaskType[]
-	removeTask: (id: string) => void;
-	changeStatus: (id: string) => void;
+	removeTask: (id: string) => void
+	changeStatus: (id: string, newStatus: boolean) => void
 	status: FilterValuesType
 }
 
@@ -19,25 +19,29 @@ export const Tasks = ({tasks, removeTask, status, changeStatus} : TasksPropsType
 		<span className="todolist__msg">{msg}</span>
 	) : (
 		<ul className="todolist__items">
-			{tasks.map((item) => (
-			<li key={item.id} className="todolist__item" data-id={item.id}>
-				<div className="todolist__item-label">
-					<input 
-						type="checkbox" 
-						id={`${item.id}`} 
-						checked={item.isDone} 
-						onChange={() => changeStatus(item.id)}
-						aria-label={item.isDone ? 'Выполнено' : 'Активно'} 
-					/>
-					{" "}
-					<label 
-						htmlFor={`${item.id}`} 
-						className="todolist__label"
-					>{item.title}</label>
-				</div>
-				<Button title='X' onClickHandler={() => removeTask(item.id)} className="btn-delete" />
-			</li>
-			))}
+			{tasks.map((item) => {
+				const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => changeStatus(item.id, e.currentTarget.checked)
+				return (
+					<li key={item.id} className="todolist__item" data-id={item.id}>
+						<div className="todolist__item-label">
+							<input 
+								type="checkbox" 
+								id={`${item.id}`} 
+								checked={item.isDone} 
+								onChange={changeTaskStatusHandler}
+								aria-label={item.isDone ? 'Выполнено' : 'Активно'} 
+							/>
+							{" "}
+							<label 
+								htmlFor={`${item.id}`} 
+								className={item.isDone ? "todolist__label task-done" : "todolist__label"}
+							>{item.title}</label>
+						</div>
+						<Button title='X' onClickHandler={() => removeTask(item.id)} className="btn-delete" />
+				</li>
+				)
+
+			})}
 		</ul>
 	);
 	return tasksList;
