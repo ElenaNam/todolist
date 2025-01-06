@@ -3,13 +3,14 @@ import { Button } from './Button';
 import { FilterValuesType, TaskType } from './App';
 
 type TasksPropsType = {
+	todolistId: string
 	tasks: TaskType[]
-	removeTask: (id: string) => void
-	changeStatus: (id: string, newStatus: boolean) => void
+	removeTask: (todolistId: string, id: string) => void
+	changeStatus: (todolistId: string, id: string, newStatus: boolean) => void
 	status: FilterValuesType
 }
 
-export const Tasks = ({tasks, removeTask, status, changeStatus} : TasksPropsType) => {
+export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus} : TasksPropsType) => {
 	let msg = "Your todolist is empty";
 	if (tasks.length === 0 && status === "active") msg = "No active tasks"
 	if (tasks.length === 0 && status === "completed") msg = "No completed tasks"
@@ -20,7 +21,7 @@ export const Tasks = ({tasks, removeTask, status, changeStatus} : TasksPropsType
 	) : (
 		<ul className="todolist__items">
 			{tasks.map((item) => {
-				const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => changeStatus(item.id, e.currentTarget.checked)
+				const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => changeStatus(todolistId, item.id, e.currentTarget.checked)
 				return (
 					<li key={item.id} className="todolist__item" data-id={item.id}>
 						<div className="todolist__item-label">
@@ -37,7 +38,7 @@ export const Tasks = ({tasks, removeTask, status, changeStatus} : TasksPropsType
 								className={item.isDone ? "todolist__label task-done" : "todolist__label"}
 							>{item.title}</label>
 						</div>
-						<Button title='X' onClickHandler={() => removeTask(item.id)} className="btn-delete" />
+						<Button title='X' onClickHandler={() => removeTask(todolistId, item.id)} className="btn-delete" />
 				</li>
 				)
 

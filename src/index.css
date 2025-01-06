@@ -41,8 +41,10 @@ button[disabled] {
 	position: relative;
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 30px;
 	background: rgba(0, 0, 0, .7) url(https://i.pinimg.com/originals/fd/a5/ca/fda5ca43b931c009c07e97e652a24ad7.png) no-repeat center/cover;
 	z-index: 1;
 }
@@ -65,7 +67,7 @@ button[disabled] {
 }
 
 h3 {
-	margin: 0 0 15px;
+	margin: 0;
 	font-size: 1.2rem;
 	color: #f1f1f1;
 }
@@ -103,8 +105,9 @@ input:focus-visible {
 }
 
 .todolist {
-	max-width: 300px;
-	width: 100%;
+	width: 300px;
+	/* width: 100%; */
+	flex-shrink: 0;
 	height: auto;
 	overflow: hidden;
 	padding: 20px 5px 20px 20px;
@@ -114,28 +117,13 @@ input:focus-visible {
 	z-index: 2;
 }
 
-/* Стилизация скроллбара для WebKit-браузеров */
-.todolist__wrapper::-webkit-scrollbar {
-	width: 8px; /* Ширина скроллбара */
-  }
-  
-  .todolist__wrapper::-webkit-scrollbar-track {
-	background: transparent; /* Цвет фона трека скроллбара */
-	border-radius: 10px; /* Радиус скругления трека */
-  }
-  
-  .todolist__wrapper::-webkit-scrollbar-thumb {
-	background-color: #e87d00; /* Цвет ползунка скроллбара */
-	border-radius: 10px; /* Радиус скругления ползунка */
-	border: 2px solid transparent; /* Прозрачная граница для создания эффекта отступа */
-	background-clip: content-box; /* Убирает фон из границы */
-  }
 
-.todolist__wrapper {
-	padding-left: 2px;
-	max-height: 400px;
-	transition: height 0.3s ease;
-	overflow-y: auto;
+.todolist__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	padding-right: 15px;
 }
 
 .todolist__msg {
@@ -145,11 +133,33 @@ input:focus-visible {
 }
 
 .todolist__items {
+	max-height: 200px;
+	height: auto;
+	transition: height 0.3s ease;
+	overflow-y: auto;
 	margin: 20px 0 30px;
 	display: flex;
 	flex-direction: column;
 	gap: 7px;
 }
+
+/* Стилизация скроллбара для WebKit-браузеров */
+.todolist__items::-webkit-scrollbar {
+	width: 8px; /* Ширина скроллбара */
+}
+
+.todolist__items::-webkit-scrollbar-track {
+	background: transparent; /* Цвет фона трека скроллбара */
+	border-radius: 10px; /* Радиус скругления трека */
+}
+
+.todolist__items::-webkit-scrollbar-thumb {
+	background-color: #e87d00; /* Цвет ползунка скроллбара */
+	border-radius: 10px; /* Радиус скругления ползунка */
+	border: 2px solid transparent; /* Прозрачная граница для создания эффекта отступа */
+	background-clip: content-box; /* Убирает фон из границы */
+}
+
 
 .todolist__item {
 	position: relative;
@@ -263,3 +273,9 @@ input:focus-visible {
 	color: #fff;
 }
 
+@media screen and (min-width: 768px) {
+	.App {
+		flex-direction: row;
+		gap: 80px;
+	}
+}

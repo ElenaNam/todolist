@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Button } from "./Button";
 
 type AddFormPropsType = {
-	addTask: (title: string) => void
+	todolistId: string
+	addTask: (todolistId: string, title: string) => void
 };
 
 
-export const AddForm = ({addTask}: AddFormPropsType) => {
+export const AddForm = ({todolistId, addTask}: AddFormPropsType) => {
 	const [inputValue, setInputValue] = useState<string>('')
 	//const [error, setError] = useState<string | null>(null)
 
@@ -18,7 +19,7 @@ export const AddForm = ({addTask}: AddFormPropsType) => {
 	const handleKeyDownPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if(inputValue && isAddTaskPossible) {
 			if(e.key === 'Enter') {
-				addTask(e.currentTarget.value)
+				addTask(todolistId, e.currentTarget.value)
 				setInputValue('');
 			}
 		}
@@ -28,7 +29,7 @@ export const AddForm = ({addTask}: AddFormPropsType) => {
 		//error && setError(null)
 		const trimmedTitle = inputValue.trim();
 		if(trimmedTitle) {
-			addTask(trimmedTitle);
+			addTask(todolistId, trimmedTitle);
 		} else {
 			//setError('Task title is required')
 		}

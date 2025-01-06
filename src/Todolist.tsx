@@ -1,35 +1,48 @@
 import React from "react";
-import { FilterValuesType, TaskType } from "./App";
+import { FilterValuesType, TaskType, TodolistType } from "./App";
 import { TodolistHeader } from "./TodolistHeader";
 import { AddForm } from "./AddForm";
 import { FilterButtons } from "./FilterButtons";
 import { Tasks } from "./Tasks";
+import { Button } from "./Button";
 
 type TodolistPropsType = {
-	title: string
+	todolist: TodolistType
 	tasks: TaskType[]
-	removeTask: (id: string) => void
-	addTask: (title: string) => void
-	changeFilter: (value: FilterValuesType) => void
-	changeStatus: (id: string, newStatus: boolean) => void
-	status: FilterValuesType
+	removeTask: (todolistId: string, id: string) => void
+	addTask: (todolistId: string, title: string) => void
+	changeFilter: (todolistId: string, value: FilterValuesType) => void
+	changeStatus: (todolistId: string, id: string, newStatus: boolean) => void
+	deleteTodolist: (todolistId: string) => void
 };
 
-export const Todolist = ({ title, tasks, removeTask, addTask, changeFilter, status, changeStatus }: TodolistPropsType) => {
+export const Todolist = ({ todolist: {id, title, filter}, tasks, removeTask, addTask, changeFilter, changeStatus, deleteTodolist }: TodolistPropsType) => {
+	const deleteTodolistHandler = () => {
+		deleteTodolist(id);
+	}
 	return (
 		<div className="todolist">
 			<div className="todolist__wrapper">
-				<TodolistHeader title={title}/>
+				<div className="todolist__header">
+					<TodolistHeader title={title}/>
+					<Button 
+						title={'x'} 
+						className="btn-delete"
+						onClickHandler={deleteTodolistHandler}
+					/>
+				</div>
 				<AddForm 
+					todolistId={id}
 					addTask={addTask} 
 				/>
 				<Tasks 
+					todolistId={id}
 					tasks={tasks} 
-					status={status} 
+					status={filter} 
 					removeTask={removeTask} 
 					changeStatus={changeStatus}
 				/>
-				<FilterButtons status={status} changeFilter={changeFilter} />
+				<FilterButtons status={filter} changeFilter={changeFilter} todolistId={id} />
 			</div>
 		</div>
 	);
