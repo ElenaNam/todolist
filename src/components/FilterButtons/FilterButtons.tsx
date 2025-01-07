@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "./Button";
-import { FilterValuesType } from "./App";
+import { Button } from "../button/Button";
+import { FilterValuesType } from "../../App";
 
 type FilterButtonsPropsType = {
 	todolistId: string

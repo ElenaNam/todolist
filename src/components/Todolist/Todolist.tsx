@@ -1,10 +1,10 @@
 import React from "react";
-import { FilterValuesType, TaskType, TodolistType } from "./App";
-import { TodolistHeader } from "./TodolistHeader";
-import { AddForm } from "./AddForm";
-import { FilterButtons } from "./FilterButtons";
-import { Tasks } from "./Tasks";
-import { Button } from "./Button";
+import { FilterValuesType, TaskType, TodolistType } from "../../App";
+import { TodolistHeader } from "../TodolistHeader/TodolistHeader";
+import { AddForm } from "../AddForm/AddForm";
+import { FilterButtons } from "../FilterButtons/FilterButtons";
+import { Tasks } from "../Tasks/Tasks";
+import { Button } from "../button/Button";
 
 type TodolistPropsType = {
 	todolist: TodolistType
@@ -29,6 +29,7 @@ export const Todolist = ({ todolist: {id, title, filter}, tasks, removeTask, add
 						title={'x'} 
 						className="btn-delete"
 						onClickHandler={deleteTodolistHandler}
+						ariaLabel="delete todolist"
 					/>
 				</div>
 				<AddForm 

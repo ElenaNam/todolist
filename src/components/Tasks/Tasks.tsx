@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { Button } from './Button';
-import { FilterValuesType, TaskType } from './App';
+import { Button } from '../button/Button';
+import { FilterValuesType, TaskType } from '../../App';
 
 type TasksPropsType = {
 	todolistId: string
@@ -38,7 +38,7 @@ export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus} : Ta
 								className={item.isDone ? "todolist__label task-done" : "todolist__label"}
 							>{item.title}</label>
 						</div>
-						<Button title='X' onClickHandler={() => removeTask(todolistId, item.id)} className="btn-delete" />
+						<Button title='X' onClickHandler={() => removeTask(todolistId, item.id)} className="btn-delete" ariaLabel="delete task"/>
 				</li>
 				)
 
