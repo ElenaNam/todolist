@@ -3,6 +3,7 @@ import type { Preview } from "@storybook/react";
 import '../src/index.css';
 
 const preview: Preview = {
+  args: { theme: 'dark' },
   parameters: {
     controls: {
       matchers: {

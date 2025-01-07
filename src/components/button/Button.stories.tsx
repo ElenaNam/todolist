@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { Button } from './Button';
 import { useState } from 'react';
 
@@ -13,11 +14,14 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-export const Btn = () => <Button title="Кнопка" onClickHandler={() => {}} ariaLabel="button"/>
+//functions 
+const btnOnClickHandler = action('clicked')
+
+export const Btn = () => <Button title="Кнопка" onClickHandler={btnOnClickHandler} ariaLabel="button"/>
 
 //AddForm Button
-export const AddFormBtn = () => <Button title="+" className="btn-primary" onClickHandler={() => {}} ariaLabel="add task" />
-export const AddFormDisabledBtn = () => <Button title="+" className="btn-primary" onClickHandler={() => {}} ariaLabel="add task" disabled />
+export const AddFormBtn = () => <Button title="+" className="btn-primary" onClickHandler={btnOnClickHandler} ariaLabel="add task" />
+export const AddFormDisabledBtn = () => <Button title="+" className="btn-primary" onClickHandler={btnOnClickHandler} ariaLabel="add task" disabled />
 
 //Filter Button
 export const FilterBtn = () => {
@@ -26,4 +30,4 @@ export const FilterBtn = () => {
 }
 
 //Delete Buttons
-export const DeleteBtn = () => <Button title={'x'} className="btn-delete" onClickHandler={() => {}} ariaLabel="delete todolist" />
+export const DeleteBtn = () => <Button title={'x'} className="btn-delete" onClickHandler={btnOnClickHandler} ariaLabel="delete todolist" />

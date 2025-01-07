@@ -41,14 +41,17 @@ button[disabled] {
 	cursor: default;
 }
 
+.container {
+	width: 100%;
+	max-width: 1280px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
 .App {
 	position: relative;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 30px;
+	min-height: 100vh;
+	padding: 50px 0;
 	background: rgba(0, 0, 0, .7) url(https://i.pinimg.com/originals/fd/a5/ca/fda5ca43b931c009c07e97e652a24ad7.png) no-repeat center/cover;
 	z-index: 1;
 }
@@ -62,6 +65,22 @@ button[disabled] {
 	height: 100%;
 	background-color: rgba(0, 0, 0, .7);
 	z-index: 1;
+}
+
+.App__header {
+	padding: 50px 0;
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+
+.App__main {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 30px;
 }
 
 .flex-wrapper {
@@ -119,6 +138,11 @@ input:focus-visible {
 	background-color: rgba(22, 28, 32, 0.8);
 	border-radius: 20px;
 	z-index: 2;
+}
+
+.todolist:nth-child(odd) {
+	/* background-color: rgba(31, 35, 37, .8); */
+	/* border-color: #e87d00; */
 }
 
 
@@ -185,7 +209,7 @@ input:focus-visible {
 	color: #90bcf5;
 }
 
-.todolist__item-label input {
+.todolist__item-label input[type="checkbox"] {
 	opacity: 0;
 	z-index: -1;
 	position: absolute;
@@ -278,7 +302,7 @@ input:focus-visible {
 }
 
 @media screen and (min-width: 768px) {
-	.App {
+	.App__main {
 		flex-direction: row;
 		gap: 80px;
 	}
