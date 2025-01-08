@@ -5,6 +5,7 @@ import '../src/index.css';
 const preview: Preview = {
   args: { theme: 'dark' },
   parameters: {
+    layout: "centered",
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -12,6 +13,7 @@ const preview: Preview = {
       },
     },
   },
+  tags: ["autodocs"],
 };
 
 export default preview;

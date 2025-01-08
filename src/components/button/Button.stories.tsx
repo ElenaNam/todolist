@@ -5,11 +5,7 @@ import { useState } from 'react';
 
 const meta: Meta<typeof Button> = {
   title: 'Button',
-  component: Button,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs']
+  component: Button
 };
 
 export default meta;
