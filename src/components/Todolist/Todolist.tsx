@@ -6,7 +6,7 @@ import { Tasks } from "../Tasks/Tasks";
 import { Button } from "../button/Button";
 import { CreateItemForm } from "../CreateItemForm/CreateItemForm";
 
-type TodolistPropsType = {
+export type TodolistPropsType = {
 	todolist: TodolistType
 	tasks: TaskType[]
 	removeTask: (todolistId: string, id: string) => void
