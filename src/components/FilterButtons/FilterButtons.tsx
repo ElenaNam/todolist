@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../button/Button";
 import { FilterValuesType } from "../../App";
+import { Button } from "@mui/material";
 
 type FilterButtonsPropsType = {
 	todolistId: string
@@ -11,20 +11,23 @@ export const FilterButtons = ({ todolistId, status, changeFilter }: FilterButton
 	return (
 		<div className="flex-wrapper">
 			<Button
-				title="All"
-				onClickHandler={() => changeFilter(todolistId, "all")}
-				className={status === 'all' ? 'btn-primary active' : 'btn-primary'}
-			/>
+				onClick={() => changeFilter(todolistId, "all")}
+				variant="contained"
+				color={status === 'all' ? 'secondary' : 'primary'}
+				//className={status === 'all' ? 'btn-primary active' : 'btn-primary'}
+			>All</Button>
 			<Button
-				title="Active"
-				onClickHandler={() => changeFilter(todolistId, "active")}
-				className={status === 'active' ? 'btn-primary active' : 'btn-primary'}
-			/>
+				onClick={() => changeFilter(todolistId, "active")}
+				variant="contained"
+				color={status === 'active' ? 'secondary' : 'primary'}
+				//className={status === 'active' ? 'btn-primary active' : 'btn-primary'}
+			>Active</Button>
 			<Button
-				title="Completed"
-				onClickHandler={() => changeFilter(todolistId, "completed")}
-				className={status === 'completed' ? 'btn-primary active' : 'btn-primary'}
-			/>
+				onClick={() => changeFilter(todolistId, "completed")}
+				variant="contained"
+				color={status === 'completed' ? 'secondary' : 'primary'}
+				//className={status === 'completed' ? 'btn-primary active' : 'btn-primary'}
+			>Completed</Button>
 		</div>
 	);
 };

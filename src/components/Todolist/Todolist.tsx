@@ -5,6 +5,8 @@ import { FilterButtons } from "../FilterButtons/FilterButtons";
 import { Tasks } from "../Tasks/Tasks";
 import { Button } from "../button/Button";
 import { CreateItemForm } from "../CreateItemForm/CreateItemForm";
+import IconButton from "@mui/material/IconButton";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export type TodolistPropsType = {
 	todolist: TodolistType
@@ -36,12 +38,13 @@ export const Todolist = ({ todolist: {id, title, filter}, tasks, removeTask, add
 			<div className="todolist__wrapper">
 				<div className="todolist__header">
 					<TodolistHeader title={title} changeTodolistTitle={changeTodolistTitleHandler}/>
-					<Button 
+					{/* <Button 
 						title={'x'} 
 						className="btn-delete"
 						onClickHandler={deleteTodolistHandler}
 						ariaLabel="delete todolist"
-					/>
+					/> */}
+					<IconButton onClick={deleteTodolistHandler} color="primary"><DeleteOutlineIcon/></IconButton>
 				</div>
 				<CreateItemForm className="addform__flex-wrapper" createItem={createTaskHandler}/>
 				<Tasks 

@@ -2,6 +2,10 @@ import React, { ChangeEvent } from "react";
 import { Button } from "../button/Button";
 import { TaskType } from "../../App";
 import { EditableSpan } from "../editableSpan/EditableSpan";
+import IconButton from "@mui/material/IconButton";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Box from "@mui/material/Box";
+import { getListItemSx } from "../Todolist/Todolist.styles";
 
 type TaskPropsType = TaskType & {
 	todolistId: string
@@ -29,18 +33,22 @@ export const Task = ({ todolistId, id, title, isDone, removeTask, changeTaskTitl
 					aria-label={isDone ? "Выполнено" : "Активно"}
 				/>
 				{" "}
-				<EditableSpan
+				<Box sx={getListItemSx(isDone)}>
+					<EditableSpan
 					title={title}
 					className={isDone ? "todolist__label task-done" : "todolist__label"}
 					changeTitle={changeItemTitleHandler}
 				/>
+				</Box>
+				
 			</label>
-			<Button
+			{/* <Button
 				title="X"
 				onClickHandler={() => removeTask(todolistId, id)}
 				className="btn-delete"
 				ariaLabel="delete task"
-			/>
+			/> */}
+			<IconButton onClick={() => removeTask(todolistId, id)} color="primary" style={{padding: 0}}><DeleteOutlineIcon/></IconButton>
 		</>
 	);
 };

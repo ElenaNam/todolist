@@ -1,5 +1,7 @@
+import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import { Button } from "../button/Button";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { TextField } from "@mui/material";
 
 type CreateItemFormPropsType = {
 	className?: string
@@ -11,7 +13,7 @@ export const CreateItemForm = ({className, placeholder, createItem} : CreateItem
 	const [taskTitle, setTaskTitle] = useState('')
 	const [error, setError] = useState<string | null>(null)
 
-	const changeItemTitleHandler = (e: React.FormEvent<HTMLInputElement>) => {
+	const changeItemTitleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		//error && setError(null)
 		setTaskTitle(e.currentTarget.value);
 		setError(null)
@@ -37,20 +39,18 @@ export const CreateItemForm = ({className, placeholder, createItem} : CreateItem
 
 	return (
 			<div className={className}>
-			<input
-				className={error ? 'error' : ''}
+			<TextField
+				//className={error ? 'error' : ''}
 				placeholder={placeholder ? placeholder : "add new task"}
 				value={taskTitle}
 				onChange={changeItemTitleHandler}
 				onKeyDown={handleKeyDownPress}
+				variant="outlined"
+				size="small"
+				error={!!error}
+				color="secondary"
 			/>
-			<Button
-				title="+"
-				className="btn-primary"
-				onClickHandler={handleClick}
-				disabled={!taskTitle.length}
-				ariaLabel="add task"
-			/>
+			<Button endIcon={<AddCircleOutlineIcon />} onClick={handleClick} disabled={!taskTitle.length} disableElevation>add</Button>
 		</div>
 	);
 };

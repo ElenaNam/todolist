@@ -1,5 +1,7 @@
+import List from '@mui/material/List';
 import { FilterValuesType, TaskType } from '../../App';
 import { Task } from './Task';
+import ListItem from '@mui/material/ListItem';
 
 type TasksPropsType = {
 	todolistId: string
@@ -19,10 +21,10 @@ export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus, chan
 	tasks.length === 0 ? (
 		<span className="todolist__msg">{msg}</span>
 	) : (
-		<ul className="todolist__items">
+		<List className="todolist__items">
 			{tasks.map((item) => {
 				return (
-					<li key={item.id} className="todolist__item" data-id={item.id}>
+					<ListItem key={item.id} className="todolist__item" data-id={item.id} style={{padding: 0}}>
 						<Task 
 							todolistId={todolistId}
 							id={item.id} 
@@ -32,10 +34,10 @@ export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus, chan
 							changeTaskStatus={changeStatus}
 							removeTask={removeTask}
 						/>
-					</li>
+					</ListItem>
 				)
 			})}
-		</ul>
+		</List>
 	);
 	return tasksList;
 };
