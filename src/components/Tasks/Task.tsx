@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Box from "@mui/material/Box";
 import { getListItemSx } from "../Todolist/Todolist.styles";
+import Checkbox from "@mui/material/Checkbox";
+import Grid2 from "@mui/material/Grid2";
 
 type TaskPropsType = TaskType & {
 	todolistId: string
@@ -24,31 +26,25 @@ export const Task = ({ todolistId, id, title, isDone, removeTask, changeTaskTitl
 
 	return (
 		<>
-			<label className="todolist__item-label">
-				<input
-					type="checkbox"
-					id={id}
-					checked={isDone}
-					onChange={changeTaskStatusHandler}
-					aria-label={isDone ? "Выполнено" : "Активно"}
-				/>
-				{" "}
-				<Box sx={getListItemSx(isDone)}>
+			<Box sx={{display:'flex', alignItems: 'center'}}>
+				<Checkbox checked={isDone} onChange={changeTaskStatusHandler} />
+				<Box sx={getListItemSx(isDone)} style={{display: 'flex'}}>
 					<EditableSpan
 					title={title}
 					className={isDone ? "todolist__label task-done" : "todolist__label"}
 					changeTitle={changeItemTitleHandler}
 				/>
 				</Box>
-				
-			</label>
+			</Box>
+			
+
 			{/* <Button
 				title="X"
 				onClickHandler={() => removeTask(todolistId, id)}
 				className="btn-delete"
 				ariaLabel="delete task"
 			/> */}
-			<IconButton onClick={() => removeTask(todolistId, id)} color="primary" style={{padding: 0}}><DeleteOutlineIcon/></IconButton>
+			<IconButton onClick={() => removeTask(todolistId, id)} size="small" color="primary" style={{padding: 0}}><DeleteOutlineIcon/></IconButton>
 		</>
 	);
 };

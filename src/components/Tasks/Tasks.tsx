@@ -24,7 +24,7 @@ export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus, chan
 		<List className="todolist__items">
 			{tasks.map((item) => {
 				return (
-					<ListItem key={item.id} className="todolist__item" data-id={item.id} style={{padding: 0}}>
+					<ListItem key={item.id} className="todolist__item" data-id={item.id} style={{padding: '0', display:'flex'}}>
 						<Task 
 							todolistId={todolistId}
 							id={item.id} 

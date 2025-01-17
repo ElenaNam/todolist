@@ -182,7 +182,7 @@ input:focus-visible {
 }
 
 
-.todolist__item {
+/* .todolist__item {
 	position: relative;
 	display: flex;
 	gap: 5px;
@@ -200,15 +200,15 @@ input:focus-visible {
 
 .todolist__item:hover .btn-delete {
 	color: #90bcf5;
-}
+} */
 
-.todolist__item-label input[type="checkbox"] {
+/* .todolist__item-label input[type="checkbox"] {
 	opacity: 0;
 	z-index: -1;
 	position: absolute;
-}
+} */
 
-.todolist__item-label input:focus-visible + .todolist__label:before {
+/* .todolist__item-label input:focus-visible + .todolist__label:before {
 	border-color: #e87d00;
 	border-width: 2px;
 }
@@ -216,9 +216,9 @@ input:focus-visible {
 .todolist__item-label input:checked + .todolist__label:after {
 	display: block;
 	visibility: visible;
-}
+} */
 
-.todolist__label {
+/* .todolist__label {
 	position: relative;
 	display: flex;
 	align-items: flex-start;
@@ -250,7 +250,7 @@ input:focus-visible {
 	font-size: 10px;
 	color: #fff;
 	transition: .3s;
-}
+} */
 
 .task-done {
 	opacity: .5;
