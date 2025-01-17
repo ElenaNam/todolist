@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from "react";
-import { Button } from "../button/Button";
 import { TaskType } from "../../App";
 import { EditableSpan } from "../editableSpan/EditableSpan";
 import IconButton from "@mui/material/IconButton";
@@ -7,7 +6,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Box from "@mui/material/Box";
 import { getListItemSx } from "../Todolist/Todolist.styles";
 import Checkbox from "@mui/material/Checkbox";
-import Grid2 from "@mui/material/Grid2";
+
 
 type TaskPropsType = TaskType & {
 	todolistId: string
@@ -31,7 +30,7 @@ export const Task = ({ todolistId, id, title, isDone, removeTask, changeTaskTitl
 				<Box sx={getListItemSx(isDone)} style={{display: 'flex'}}>
 					<EditableSpan
 					title={title}
-					className={isDone ? "todolist__label task-done" : "todolist__label"}
+					//className={isDone ? "todolist__label task-done" : "todolist__label"}
 					changeTitle={changeItemTitleHandler}
 				/>
 				</Box>

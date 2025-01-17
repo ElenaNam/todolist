@@ -7,7 +7,7 @@ type TodolistHeaderPropsType = {
 	changeTodolistTitle: (newTitle: string) => void
 };
 export const TodolistHeader = ({title, changeTodolistTitle}: TodolistHeaderPropsType) => {
-	return <Typography align="center" variant='h6'>
+	return <Typography align="center" variant='h6' fontWeight={'700'}>
 		<EditableSpan title={title} changeTitle={changeTodolistTitle} />
 	</Typography>;
 };

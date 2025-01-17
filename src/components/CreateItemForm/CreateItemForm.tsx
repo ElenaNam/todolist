@@ -50,7 +50,7 @@ export const CreateItemForm = ({className, placeholder, createItem} : CreateItem
 				error={!!error}
 				color="secondary"
 			/>
-			<Button endIcon={<AddCircleOutlineIcon />} onClick={handleClick} disabled={!taskTitle.length} disableElevation>add</Button>
+			<Button variant='outlined' endIcon={<AddCircleOutlineIcon />} onClick={handleClick} disabled={!taskTitle.length} disableElevation>add</Button>
 		</div>
 	);
 };
