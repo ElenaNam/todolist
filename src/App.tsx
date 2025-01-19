@@ -9,7 +9,7 @@ import { CreateItemForm } from "./components/CreateItemForm/CreateItemForm";
 import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
-import { containerSx } from "./components/Todolist/Todolist.styles";
+import { containerSx, appHeaderSx } from "./App.styles";
 import { NavButton } from "./components/NavButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Switch } from "@mui/material";
@@ -179,7 +179,7 @@ function App() {
 
   //MUI
   const [isLightMode, setIsLightMode] = useState(true)
-  const theme = createTheme({
+  let theme = createTheme({
 	palette: {
 			primary: {main: '#ff9800', light: '#ffac33', dark: '#b26a00'}, 
 			secondary: {main: '#ffc400'}, 
@@ -215,7 +215,7 @@ function App() {
 			}}
 		  >
 			<CreateItemForm
-			  className="App__header"
+			  styles={appHeaderSx}
 			  placeholder="add new todolist"
 			  createItem={createTodolist}
 			/>
@@ -228,7 +228,6 @@ function App() {
 			  alignItems: "center",
 			}}
 		  >
-			<div className="App__main">
 			  {todolists.map((list) => {
 				const todolistTasks = tasks[list.id];
 				let tasksForTodoList = todolistTasks;
@@ -262,7 +261,6 @@ function App() {
 				  </Grid2>
 				);
 			  })}
-			</div>
 		  </Grid2>
 		</Container>
 	  </ThemeProvider>

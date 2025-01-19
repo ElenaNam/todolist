@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { CreateItemForm } from './CreateItemForm';
+import { todolistAddFormSx } from '../../App.styles';
 
 const meta: Meta<typeof CreateItemForm> = {
   title: 'CreateItemForm',
@@ -11,5 +12,5 @@ export default meta;
 
 const addItem = action('Button "+" was pressed inside the form')
 
-export const CreateItem = () => <CreateItemForm className="addform__flex-wrapper" createItem={addItem}/>
+export const CreateItem = () => <CreateItemForm styles={todolistAddFormSx} createItem={addItem}/>
 

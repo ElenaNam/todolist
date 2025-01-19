@@ -2,6 +2,8 @@ import List from '@mui/material/List';
 import { FilterValuesType, TaskType } from '../../App';
 import { Task } from './Task';
 import ListItem from '@mui/material/ListItem';
+import { Typography } from '@mui/material';
+import { todolistItemsSx } from "../../App.styles";
 
 type TasksPropsType = {
 	todolistId: string
@@ -19,9 +21,9 @@ export const Tasks = ({todolistId, tasks, removeTask, status, changeStatus, chan
 
 	const tasksList: JSX.Element =
 	tasks.length === 0 ? (
-		<span className="todolist__msg">{msg}</span>
+			<Typography sx={{padding: '9px 0;'}}>{msg}</Typography>
 	) : (
-		<List className="todolist__items">
+		<List sx={todolistItemsSx}>
 			{tasks.map((item) => {
 				return (
 					<ListItem key={item.id} className="todolist__item" data-id={item.id} style={{padding: '0', display:'flex'}}>
