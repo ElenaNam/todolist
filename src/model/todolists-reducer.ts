@@ -1,7 +1,6 @@
 import { v1 } from 'uuid'
 import { FilterValuesType, TodolistType } from '../App'
 
-
 const initialState: TodolistType[] = []
 
 export type DeleteTodolistAction = ReturnType<typeof deleteTodolistAC>
@@ -46,11 +45,8 @@ export const todolistsReducer = (state: TodolistType[] = initialState, action: A
 			return state.map((todolist) =>
 				todolist.id === action.payload.id ? { ...todolist, filter: action.payload.filter } : todolist
 			);
-
 		
 		default:
 			return state
 	}
-
-	
 }
