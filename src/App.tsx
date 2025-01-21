@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,6 +13,7 @@ import { containerSx, appHeaderSx } from "./App.styles";
 import { NavButton } from "./components/NavButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Switch } from "@mui/material";
+import { changeTodolistTitleAC, createTodolistAC, todolistsReducer } from "./model/todolists-reducer";
 
 
 export type TaskType = {
@@ -84,10 +85,12 @@ function App() {
 	],
   });
 
-  const [todolists, setTodolists] = useState<TodolistType[]>([
-	{ id: todolistId1, title: "What to learn", filter: "all" },
-	{ id: todolistId2, title: "What to buy", filter: "all" },
-  ]);
+//   const [todolists, setTodolists] = useState<TodolistType[]>([
+// 	{ id: todolistId1, title: "What to learn", filter: "all" },
+// 	{ id: todolistId2, title: "What to buy", filter: "all" },
+//   ]);
+
+  const [todolists, dispatchToTodolists] = useReducer(todolistsReducer, []);
 
   //CRUD logic
 
@@ -142,14 +145,16 @@ function App() {
 
   //Create
   const createTodolist = (title: string) => {
-	const todolistId = v1();
-	const newTodolist: TodolistType = {
-	  id: todolistId,
-	  title: title,
-	  filter: "all",
-	};
-	setTodolists([...todolists, newTodolist]);
-	setTasks({ ...tasks, [todolistId]: [] });
+	// const todolistId = v1();
+	// const newTodolist: TodolistType = {
+	//   id: todolistId,
+	//   title: title,
+	//   filter: "all",
+	// };
+	// setTodolists([...todolists, newTodolist]);
+	const action = createTodolistAC(title)
+	dispatchToTodolists(action)
+	setTasks({ ...tasks, [action.payload.id]: [] });
   };
 
   //U - update 1
@@ -162,10 +167,11 @@ function App() {
 
   //U - update 2
   const changeTodolistTitle = (todolistId: string, title: string) => {
-	const newTodolists = todolists.map((todolist) =>
-	  todolist.id === todolistId ? { ...todolist, title } : todolist
-	);
-	setTodolists(newTodolists);
+	// const newTodolists = todolists.map((todolist) =>
+	//   todolist.id === todolistId ? { ...todolist, title } : todolist
+	// );
+	// setTodolists(newTodolists);
+	dispatchToTodolists(changeTodolistTitleAC({id: todolistId, title}))
   };
 
   //Delete
