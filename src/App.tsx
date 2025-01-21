@@ -13,7 +13,7 @@ import { NavButton } from "./components/NavButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Switch } from "@mui/material";
 import { changeTodolistFilterAC, changeTodolistTitleAC, createTodolistAC, deleteTodolistAC, todolistsReducer } from "./model/todolists-reducer";
-import { deleteTodolistAC as deleteTodolistACFromTasksReducer, changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer } from "./model/tasks-reducer";
+import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer } from "./model/tasks-reducer";
 
 export type TaskType = {
   id: string;
@@ -85,7 +85,6 @@ function App() {
   //Delete
   const deleteTodolist = (todolistId: string) => {
 	dispatchToTodolists(deleteTodolistAC(todolistId))
-	//dispatchToTasks(deleteTodolistACFromTasksReducer(todolistId))
   };
 
   //MUI
