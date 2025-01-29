@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { CreateItemForm } from './CreateItemForm';
-import { todolistAddFormSx } from '../../App.styles';
+import { todolistAddFormSx } from '../../app/App.styles';
 
 const meta: Meta<typeof CreateItemForm> = {
   title: 'CreateItemForm',

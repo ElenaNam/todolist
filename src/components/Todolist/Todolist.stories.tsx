@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react/*";
 import { Todolist, TodolistPropsType } from "./Todolist";
-import { FilterValuesType } from "../../App";
+import { FilterValuesType } from "../../app/App";
 
 const meta: Meta<typeof Todolist> = {
 	title: "Todolist",

@@ -1,10 +1,10 @@
 import React, { ChangeEvent } from "react";
-import { TaskType } from "../../App";
+import { TaskType } from "../../app/App";
 import { EditableSpan } from "../editableSpan/EditableSpan";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Box from "@mui/material/Box";
-import { getListItemSx } from "../../App.styles";
+import { getListItemSx } from "../../app/App.styles";
 import Checkbox from "@mui/material/Checkbox";
 
 

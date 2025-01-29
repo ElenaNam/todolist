@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "../button/Button";
-import { FilterValuesType } from "../../App";
+import { FilterValuesType } from "../../app/App";
 import Box from "@mui/material/Box";
-import { containerSx } from "../../App.styles";
+import { containerSx } from "../../app/App.styles";
 
 type FilterButtonsPropsType = {
 	todolistId: string

@@ -1,5 +1,5 @@
 import React from "react";
-import { FilterValuesType, TaskType, TodolistType } from "../../App";
+import { FilterValuesType, TaskType, TodolistType } from "../../app/App";
 import { TodolistHeader } from "../TodolistHeader/TodolistHeader";
 import { FilterButtons } from "../FilterButtons/FilterButtons";
 import { Tasks } from "../Tasks/Tasks";
@@ -7,7 +7,7 @@ import { CreateItemForm } from "../CreateItemForm/CreateItemForm";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Box from "@mui/material/Box";
-import { todolistSx, todolistAddFormSx, todolistHeaderSx } from "../../App.styles";
+import { todolistSx, todolistAddFormSx, todolistHeaderSx } from "../../app/App.styles";
 import Grid2 from "@mui/material/Grid2";
 
 export type TodolistPropsType = {

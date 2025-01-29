@@ -1,5 +1,5 @@
 import React from "react";
-import { FilterValuesType } from "../../App";
+import { FilterValuesType } from "../../app/App";
 import { Button, Grid2 } from "@mui/material";
 
 type FilterButtonsPropsType = {

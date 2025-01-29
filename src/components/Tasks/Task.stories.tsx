@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react";
-import { FilterValuesType, TaskType } from "../../App";
+import { FilterValuesType, TaskType } from "../../app/App";
 import { Task } from "./Task";
 import { useState } from "react";
 

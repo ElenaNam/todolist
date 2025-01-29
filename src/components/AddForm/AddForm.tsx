@@ -3,7 +3,7 @@ import { Button } from "../button/Button";
 import Grid2 from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import { addFormMsgSx } from "../../App.styles";
+import { addFormMsgSx } from "../../app/App.styles";
 
 type AddFormPropsType = {
 	todolistId: string

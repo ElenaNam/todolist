@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/react";
 import { Tasks } from "./Tasks";
-import { FilterValuesType, TaskType } from "../../App";
+import { FilterValuesType, TaskType } from "../../app/App";
 
 const meta: Meta<typeof Tasks> = {
   title: "Tasks",

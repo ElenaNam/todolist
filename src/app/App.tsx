@@ -1,19 +1,24 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Todolist } from "./components/Todolist/Todolist";
-import { CreateItemForm } from "./components/CreateItemForm/CreateItemForm";
+import { Todolist } from "../components/Todolist/Todolist";
+import { CreateItemForm } from "../components/CreateItemForm/CreateItemForm";
 import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Grid2";
 import Paper from "@mui/material/Paper";
 import { containerSx, appHeaderSx } from "./App.styles";
-import { NavButton } from "./components/NavButton";
+import { NavButton } from "../components/NavButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Switch } from "@mui/material";
-import { changeTodolistFilterAC, changeTodolistTitleAC, createTodolistAC, deleteTodolistAC, todolistsReducer } from "./model/todolists-reducer";
-import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer } from "./model/tasks-reducer";
+import { changeTodolistFilterAC, changeTodolistTitleAC, createTodolistAC, deleteTodolistAC } from "../model/todolists-reducer";
+import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC } from "../model/tasks-reducer";
+
+import { useAppSelector } from "../common/hooks/useAppSelector";
+import { useAppDispatch } from "../common/hooks/useAppDispatch";
+import { selectTodolists } from "../model/todolists-selectors";
+import { selectTasks } from "../model/tasks-selectors";
 
 export type TaskType = {
   id: string;
@@ -33,11 +38,15 @@ export type TodolistType = {
   filter: FilterValuesType;
 };
 
-function App() {
+export const App = () => {
   //BLL
-  const [tasks, dispatchToTasks] = useReducer(tasksReducer, {})
-  const [todolists, dispatchToTodolists] = useReducer(todolistsReducer, [
-  ]);
+  //const [tasks, dispatchToTasks] = useSelector(tasksReducer, {})
+  //const tasks = useAppSelector((state) => state.tasks)
+  const tasks = useAppSelector(selectTasks)
+  const todolists = useAppSelector(selectTodolists);
+  //const [todolists, dispatchToTodolists] = useSelector(todolistsReducer, []);
+
+  const dispatch = useAppDispatch()
 
   //CRUD logic
 
@@ -45,46 +54,45 @@ function App() {
 
   //C - create
   const addTask = (todolistId: string, title: string) => {
-	dispatchToTasks(createTaskAC({todolistId, title}))
+	dispatch(createTaskAC({todolistId, title}))
   };
 
   //U - update 1
   const changeStatus = (todolistId: string, id: string, newStatus: boolean) => {
-	dispatchToTasks(changeTaskStatusAC({todolistId, id, status: newStatus}))
+	dispatch(changeTaskStatusAC({todolistId, id, status: newStatus}))
   };
 
   //U - update 2
   const changeTaskTitle = (todolistId: string, id: string, title: string) => {
-	dispatchToTasks(changeTaskTitleAC({todolistId, id, title}))
+	dispatch(changeTaskTitleAC({todolistId, id, title}))
   };
 
   //D - delete
   const removeTask = (todolistId: string, id: string) => {
-	dispatchToTasks(deleteTaskAC({todolistId, id}))
+	dispatch(deleteTaskAC({todolistId, id}))
   };
 
   //todolists
 
   //Create
   const createTodolist = (title: string) => {
-	const action = createTodolistAC(title)
-	dispatchToTodolists(action)
-	dispatchToTasks(action)
+	dispatch(createTodolistAC(title))
+
   };
 
   //U - update 1
   const changeFilter = (todolistId: string, filter: FilterValuesType) => {
-	dispatchToTodolists(changeTodolistFilterAC({id: todolistId, filter}))
+	dispatch(changeTodolistFilterAC({id: todolistId, filter}))
   };
 
   //U - update 2
   const changeTodolistTitle = (todolistId: string, title: string) => {
-	dispatchToTodolists(changeTodolistTitleAC({id: todolistId, title}))
+	dispatch(changeTodolistTitleAC({id: todolistId, title}))
   };
 
   //Delete
   const deleteTodolist = (todolistId: string) => {
-	dispatchToTodolists(deleteTodolistAC(todolistId))
+	dispatch(deleteTodolistAC({id: todolistId}))
   };
 
   //MUI
@@ -177,5 +185,3 @@ function App() {
 	</div>
   );
 }
-
-export default App;

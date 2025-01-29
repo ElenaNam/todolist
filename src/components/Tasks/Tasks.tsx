@@ -1,9 +1,9 @@
 import List from '@mui/material/List';
-import { FilterValuesType, TaskType } from '../../App';
+import { FilterValuesType, TaskType } from '../../app/App';
 import { Task } from './Task';
 import ListItem from '@mui/material/ListItem';
 import { Typography } from '@mui/material';
-import { todolistItemsSx } from "../../App.styles";
+import { todolistItemsSx } from "../../app/App.styles";
 
 type TasksPropsType = {
 	todolistId: string

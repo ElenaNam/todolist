@@ -1,7 +1,7 @@
-import {v1} from 'uuid'
-//import { expect, test } from 'vitest'
-import { TodolistType } from '../App'
+import { beforeEach, expect, test } from 'vitest'
+import { TodolistType } from '../app/App'
 import {createTodolistAC, changeTodolistTitleAC, changeTodolistFilterAC, deleteTodolistAC, todolistsReducer} from './todolists-reducer'
+import { nanoid } from '@reduxjs/toolkit'
 
 
 let todolistId1: string
@@ -9,8 +9,8 @@ let todolistId2: string
 let startState: TodolistType[] = []
 
 beforeEach(()=>{
-	todolistId1 = v1()
-	todolistId2 = v1() 
+	todolistId1 = nanoid()
+	todolistId2 = nanoid() 
 
 	startState = [
 		{id: todolistId1, title: 'What to learn', filter: 'all'},
@@ -21,7 +21,7 @@ beforeEach(()=>{
 
 test('correct todolist should be deleted', () => {
 	// Действие
-	const endState = todolistsReducer(startState, deleteTodolistAC(todolistId1))
+	const endState = todolistsReducer(startState, deleteTodolistAC({id: todolistId1}))
 	// const action = {
 	//     type: 'delete_todolist', 
 	//     payload: {

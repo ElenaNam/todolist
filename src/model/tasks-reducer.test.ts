@@ -1,5 +1,5 @@
 import { v1 } from "uuid"
-import { TasksState } from "../App"
+import { TasksState } from "../app/App"
 import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, createTodolistAC, deleteTaskAC, deleteTodolistAC, tasksReducer } from "./tasks-reducer"
 
 let startState: TasksState = {}
