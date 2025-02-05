@@ -19,6 +19,9 @@ import { useAppSelector } from "../common/hooks/useAppSelector";
 import { useAppDispatch } from "../common/hooks/useAppDispatch";
 import { selectTodolists } from "../model/todolists-selectors";
 import { selectTasks } from "../model/tasks-selectors";
+import { selectThemeMode } from "./app-selectors";
+import { changeThemeModeAC } from "./app-reducer";
+import { getTheme } from "../common/theme/theme";
 
 export type TaskType = {
   id: string;
@@ -40,13 +43,19 @@ export type TodolistType = {
 
 export const App = () => {
   //BLL
-  //const [tasks, dispatchToTasks] = useSelector(tasksReducer, {})
-  //const tasks = useAppSelector((state) => state.tasks)
   const tasks = useAppSelector(selectTasks)
   const todolists = useAppSelector(selectTodolists);
-  //const [todolists, dispatchToTodolists] = useSelector(todolistsReducer, []);
+
+  const themeMode = useAppSelector(selectThemeMode)
+  const theme = getTheme(themeMode)
 
   const dispatch = useAppDispatch()
+
+
+  //MUI
+  const changeMode = () => {
+	dispatch(changeThemeModeAC({themeMode: themeMode === 'light' ? 'dark' : 'light'}))
+  }
 
   //CRUD logic
 
@@ -54,7 +63,7 @@ export const App = () => {
 
   //C - create
   const addTask = (todolistId: string, title: string) => {
-	dispatch(createTaskAC({todolistId, title}))
+	dispatch(createTaskAC(todolistId, title))
   };
 
   //U - update 1
@@ -77,7 +86,6 @@ export const App = () => {
   //Create
   const createTodolist = (title: string) => {
 	dispatch(createTodolistAC(title))
-
   };
 
   //U - update 1
@@ -95,16 +103,6 @@ export const App = () => {
 	dispatch(deleteTodolistAC({id: todolistId}))
   };
 
-  //MUI
-  const [isLightMode, setIsLightMode] = useState(true)
-  let theme = createTheme({
-	palette: {
-			primary: {main: '#ff9800', light: '#ffac33', dark: '#b26a00'}, 
-			secondary: {main: '#ffc400'}, 
-			mode: isLightMode ? 'light' : 'dark', 
-		}, 
-	})
-
   //UI
   return (
 	<div className="App">
@@ -117,7 +115,7 @@ export const App = () => {
 				<MenuIcon />
 			  </IconButton>
 			  <div>
-				<Switch onChange={() => setIsLightMode(!isLightMode)} />
+				<Switch onChange={() => changeMode()} />
 				<NavButton>Sign in</NavButton>
 				<NavButton>Sign up</NavButton>
 				<NavButton background={"dodgerblue"}>Faq</NavButton>

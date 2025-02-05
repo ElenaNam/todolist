@@ -1,9 +1,10 @@
 import List from '@mui/material/List';
-import { FilterValuesType, TaskType } from '../../app/App';
+import { FilterValuesType, TaskType } from '@/app/App';
 import { Task } from './Task';
 import ListItem from '@mui/material/ListItem';
 import { Typography } from '@mui/material';
-import { todolistItemsSx } from "../../app/App.styles";
+import { todolistItemsSx } from "@/app/App.styles";
+import { JSX } from 'react';
 
 type TasksPropsType = {
 	todolistId: string

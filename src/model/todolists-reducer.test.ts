@@ -1,5 +1,5 @@
 import { beforeEach, expect, test } from 'vitest'
-import { TodolistType } from '../app/App'
+import { TodolistType } from '@/app/App'
 import {createTodolistAC, changeTodolistTitleAC, changeTodolistFilterAC, deleteTodolistAC, todolistsReducer} from './todolists-reducer'
 import { nanoid } from '@reduxjs/toolkit'
 

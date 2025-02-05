@@ -1,4 +1,4 @@
-import { FilterValuesType, TodolistType } from '../app/App'
+import { FilterValuesType, TodolistType } from '@/app/App'
 import { createAction, createReducer, nanoid } from '@reduxjs/toolkit'
 
 export const deleteTodolistAC = createAction<{id: string}>('todolists/deleteTodolist')

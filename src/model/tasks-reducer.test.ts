@@ -1,6 +1,8 @@
-import { v1 } from "uuid"
+import { nanoid } from '@reduxjs/toolkit'
+import { beforeEach, expect, test } from 'vitest'
 import { TasksState } from "../app/App"
-import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, createTodolistAC, deleteTaskAC, deleteTodolistAC, tasksReducer } from "./tasks-reducer"
+import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer } from "./tasks-reducer"
+import { createTodolistAC, deleteTodolistAC } from "./todolists-reducer"
 
 let startState: TasksState = {}
 
@@ -8,12 +10,12 @@ beforeEach(()=>{
 	startState = {
 		todolistId1: [
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "HTML&CSS",
 			isDone: true,
 		  },
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "JS",
 			isDone: false,
 		  },
@@ -23,14 +25,14 @@ beforeEach(()=>{
 			isDone: false,
 		  },
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "Styled Components",
 			isDone: true,
 		  },
 		],
 		todolistId2: [
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "Мандарины",
 			isDone: true,
 		  },
@@ -40,12 +42,12 @@ beforeEach(()=>{
 			isDone: false,
 		  },
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "Подарки",
 			isDone: false,
 		  },
 		  {
-			id: v1(),
+			id: nanoid() ,
 			title: "Шапка",
 			isDone: true,
 		  },
@@ -66,7 +68,7 @@ test('array should be created for new todolist', () => {
 })
 
 test('property with todolistId should be deleted', () => {
-	const endState = tasksReducer(startState, deleteTodolistAC('todolistId2'))
+	const endState = tasksReducer(startState, deleteTodolistAC({id: 'todolistId2'}))
    
 	const keys = Object.keys(endState)
 
@@ -83,7 +85,7 @@ test('correct task should be deleted', () => {
 
 test('correct task should be created', () => {
 	const newTaskTitle = 'New task'
-	const endState = tasksReducer(startState, createTaskAC({todolistId: "todolistId2", title: newTaskTitle}))
+	const endState = tasksReducer(startState, createTaskAC("todolistId2", newTaskTitle))
 
 	expect(endState["todolistId2"][0].title).toBe('New task')
 	expect(endState["todolistId2"].length).toBe(5)
