@@ -6,11 +6,11 @@ import { Grid2, SxProps, TextField } from "@mui/material";
 type CreateItemFormPropsType = {
 	styles?: SxProps
 	placeholder?: string
-	createItem: (itemTitle: string) => void
+	createItem: (title: string) => void
 }
 
 export const CreateItemForm = ({styles, placeholder, createItem} : CreateItemFormPropsType) => {
-	const [taskTitle, setTaskTitle] = useState('')
+	const [taskTitle, setTaskTitle] = useState<string>('')
 	const [error, setError] = useState<string | null>(null)
 
 	const changeItemTitleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

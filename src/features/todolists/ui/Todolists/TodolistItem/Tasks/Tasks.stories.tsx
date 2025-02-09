@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 import { Tasks } from "./Tasks";
-import { FilterValuesType, TaskType } from "@/app/App";
+import { TaskType } from "@/model/tasks-reducer";
+import { FilterValuesType } from "@/model/todolists-reducer";
 
 const meta: Meta<typeof Tasks> = {
   title: "Tasks",

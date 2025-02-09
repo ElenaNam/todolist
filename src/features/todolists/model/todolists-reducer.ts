@@ -1,6 +1,18 @@
-import { FilterValuesType, TodolistType } from '@/app/App'
 import { createAction, createReducer, nanoid } from '@reduxjs/toolkit'
 
+//Types
+export type FilterValuesType = "all" | "active" | "completed";
+
+export type TodolistType = {
+	id: string;
+	title: string;
+	filter: FilterValuesType;
+};
+
+//State
+const initialState: TodolistType[] = []
+
+//AC
 export const deleteTodolistAC = createAction<{id: string}>('todolists/deleteTodolist')
 export const createTodolistAC = createAction('todolists/createTodolist', (title: string) => {
 	return {payload: {title, id: nanoid()}}
@@ -8,8 +20,7 @@ export const createTodolistAC = createAction('todolists/createTodolist', (title:
 export const changeTodolistTitleAC = createAction<{id: string, title: string}>('todolists/changeTodolistTitle')
 export const changeTodolistFilterAC = createAction<{id: string, filter: FilterValuesType}>('todolists/changeTodolistFilter')
 
-const initialState: TodolistType[] = []
-
+//Reducer
 export const todolistsReducer = createReducer(initialState, builder => {
 	builder
 		.addCase(deleteTodolistAC, (state, action) => {

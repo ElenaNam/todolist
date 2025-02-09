@@ -9,17 +9,6 @@ export const appHeaderSx: SxProps = {
 	gap: '7px'
 }
 
-export const containerSx: SxProps = {
-	display: 'flex',
-	justifyContent: 'space-between',
-}
-
-export const todolistSx: SxProps = {
-	flexShrink: '0',
-	height: 'auto',
-	overflow: 'hidden',
-	padding: '20px',
-}
 
 
 export const todolistItemsSx = {
@@ -46,17 +35,6 @@ export const todolistItemsSx = {
 	},
   };
 
-export const todolistHeaderSx: SxProps = {
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	marginBottom: '15px'
-}
-
-export const todolistAddFormSx: SxProps = {
-	display: 'flex',
-	gap: '7px'
-}
 
 export const getListItemSx = (isDone: boolean): SxProps => ({
 	opacity: isDone ? 0.4 : 1,
