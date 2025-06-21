@@ -1,15 +1,25 @@
-import { useMeQuery } from "@/features/auth/api/authApi";
+import { ResultCode } from "@/common/enums"
+import { useAppDispatch } from "@/common/hooks/useAppDispatch"
+import { useMeQuery } from "@/features/auth/api/authApi"
+import { useEffect, useState } from "react"
+import { setIsLoggedInAC } from "./app-slice"
 
 export const App = () => {
-	const {data, isLoading, isError, error} = useMeQuery()
+  const [isInit, setIsInit] = useState(false)
 
+  const { data, isLoading } = useMeQuery()
 
-	if(isLoading) return <p>Loading...</p> 
-	if(isError) return <pre>{JSON.stringify(error, null, 2)}</pre> //TODO: handleError
+  const dispatch = useAppDispatch()
 
-	return (
-		<div className="App">
-			{data?.data.login}
-		</div>
-	);
+  useEffect(() => {
+    if (isLoading) return
+    setIsInit(true)
+    if (data?.resultCode === ResultCode.Success) {
+      dispatch(setIsLoggedInAC({ isLoggedIn: true }))
+    }
+  }, [isLoading])
+
+  if (!isInit) return <p>Initialization...</p>
+
+  return <div className="App">{data?.data.login}</div>
 }
