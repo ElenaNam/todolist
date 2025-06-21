@@ -1,16 +1,13 @@
 {
-  "name": "todolist",
+  "name": "todolist-20",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ElenaNam.github.io/todolist",
   "scripts": {
     "dev": "vite --port 3000",
     "build": "tsc -b && vite build",
     "test": "vitest",
-    "preview": "vite preview", 
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -20,7 +17,6 @@
     "@mui/material": "6.3.1",
     "@reduxjs/toolkit": "2.5.0",
     "axios": "1.7.9",
-    "gh-pages": "^6.2.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "7.54.2",
