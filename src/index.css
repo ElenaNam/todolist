@@ -12,8 +12,24 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+a {
+	all: unset;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
 .App {
 	position: relative;
 	min-height: 100vh;
-	padding: 0 0 50px;
+	padding: 0 0 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.footer {
+	margin: auto 0 0;
 }

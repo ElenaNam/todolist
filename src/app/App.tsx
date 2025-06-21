@@ -3,6 +3,10 @@ import { useAppDispatch } from "@/common/hooks/useAppDispatch"
 import { useMeQuery } from "@/features/auth/api/authApi"
 import { useEffect, useState } from "react"
 import { setIsLoggedInAC } from "./app-slice"
+import { Header } from "@/common/components/header/Header"
+import Container from "@mui/material/Container"
+import { containerSx } from "@/common/styles"
+import { Footer } from "@/common/components/footer/Footer"
 
 export const App = () => {
   const [isInit, setIsInit] = useState(false)
@@ -21,5 +25,15 @@ export const App = () => {
 
   if (!isInit) return <p>Initialization...</p>
 
-  return <div className="App">{data?.data.login}</div>
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <Container maxWidth={"lg"}>
+          {data?.data.login}
+        </Container>
+      </main>
+	  <Footer/>
+    </div>
+  )
 }
