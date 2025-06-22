@@ -3,10 +3,9 @@ import { useAppDispatch } from "@/common/hooks/useAppDispatch"
 import { useMeQuery } from "@/features/auth/api/authApi"
 import { useEffect, useState } from "react"
 import { setIsLoggedInAC } from "./app-slice"
-import { Header } from "@/common/components/header/Header"
-import Container from "@mui/material/Container"
-import { containerSx } from "@/common/styles"
-import { Footer } from "@/common/components/footer/Footer"
+import LinearProgress from "@mui/material/LinearProgress"
+import { Footer, Header } from "@/common/components"
+import { Routing } from "@/common/routing"
 
 export const App = () => {
   const [isInit, setIsInit] = useState(false)
@@ -23,17 +22,13 @@ export const App = () => {
     }
   }, [isLoading])
 
-  if (!isInit) return <p>Initialization...</p>
+  if (!isInit) return <LinearProgress />
 
   return (
     <div className="App">
       <Header />
-      <main>
-        <Container maxWidth={"lg"}>
-          {data?.data.login}
-        </Container>
-      </main>
-	  <Footer/>
+      <Routing />
+      <Footer />
     </div>
   )
 }
