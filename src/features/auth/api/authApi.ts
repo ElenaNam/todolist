@@ -12,7 +12,14 @@ export const authApi = baseApi.injectEndpoints({
         return response
       },
     }),
+    login: build.mutation<BaseResponse<{ userId: number; token: string }>, { email: string; password: string }>({
+      query: (body) => ({
+        url: "auth/login",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 })
 
-export const { useMeQuery } = authApi
+export const { useMeQuery, useLoginMutation } = authApi
