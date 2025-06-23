@@ -21,10 +21,11 @@ export const Login = () => {
     handleSubmit,
     reset,
     control,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<Inputs>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {email: '', password: '', rememberMe: false}
+    defaultValues: { email: "", password: "", rememberMe: false },
+    mode: "onBlur",
   })
 
   const [login] = useLoginMutation()
@@ -62,10 +63,20 @@ export const Login = () => {
             </p>
           </FormLabel>
           <FormGroup>
-            <TextField label="Email" margin="normal" error={!!errors.email} {...register("email", { required: true })} />
+            <TextField
+              label="Email"
+              margin="normal"
+              error={!!errors.email}
+              {...register("email", { required: true })}
+            />
             {errors.email && <span>{errors.email.message}</span>}
 
-            <TextField label="Password" margin="normal" error={!!errors.password} {...register("password", { required: true })} />
+            <TextField
+              label="Password"
+              margin="normal"
+              error={!!errors.password}
+              {...register("password", { required: true })}
+            />
             {errors.password && <span>{errors.password.message}</span>}
 
             <FormControlLabel
@@ -79,7 +90,7 @@ export const Login = () => {
               }
             />
 
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary" disabled={!isValid}>
               Login
             </Button>
           </FormGroup>
