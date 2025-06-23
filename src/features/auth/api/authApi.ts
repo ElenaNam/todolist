@@ -1,5 +1,6 @@
 import { baseApi } from "@/app/baseApi"
 import { BaseResponse } from "@/common/types/types"
+import { Inputs } from "../ui/lib/schemas";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -12,7 +13,7 @@ export const authApi = baseApi.injectEndpoints({
         return response
       },
     }),
-    login: build.mutation<BaseResponse<{ userId: number; token: string }>, { email: string; password: string }>({
+    login: build.mutation<BaseResponse<{ userId: number; token: string }>, Inputs>({
       query: (body) => ({
         url: "auth/login",
         method: "POST",
