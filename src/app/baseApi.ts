@@ -1,4 +1,5 @@
 import { AUTH_TOKEN } from "@/common/constants"
+import { handleError } from "@/common/utils"
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 export const baseApi = createApi({
@@ -14,7 +15,7 @@ export const baseApi = createApi({
       },
     })(args, api, extraOptions)
 
-    //handleError(api, result)//TODO: add in common/utils/handleError.ts
+    handleError(api, result)
 
     return result
   },

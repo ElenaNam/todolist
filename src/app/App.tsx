@@ -4,7 +4,7 @@ import { useMeQuery } from "@/features/auth/api/authApi"
 import { useEffect, useState } from "react"
 import { setIsLoggedInAC } from "./app-slice"
 import LinearProgress from "@mui/material/LinearProgress"
-import { Footer, Header } from "@/common/components"
+import { ErrorSnackbar, Footer, Header } from "@/common/components"
 import { Routing } from "@/common/routing"
 
 export const App = () => {
@@ -28,6 +28,7 @@ export const App = () => {
     <div className="App">
       <Header />
       <Routing />
+      <ErrorSnackbar />
       <Footer />
     </div>
   )

@@ -20,7 +20,7 @@ export const Routing = () => {
         <Route
           index
           element={
-            <ProtectedRoute isAllowed={isLoggedIn}>
+            <ProtectedRoute isAllowed={isLoggedIn} redirectPath={Path.Login}>
               <Home />
             </ProtectedRoute>
           }
