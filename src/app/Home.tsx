@@ -1,7 +1,9 @@
+import { Todolists } from "@/features/auth/todolists/Todolists"
+
 export const Home = () => {
   return (
     <>
-      <h1>Home</h1>
+      <Todolists />
     </>
   )
 }
