@@ -2,6 +2,8 @@ import IconButton from "@mui/material/IconButton"
 import AddBoxIcon from "@mui/icons-material/AddBox"
 import TextField from "@mui/material/TextField"
 import { type ChangeEvent, type KeyboardEvent, useState } from "react"
+import s from "./CreateItemForm.module.css"
+import { BorderColor } from "@mui/icons-material"
 
 type Props = {
   onCreateItem: (title: string) => void
@@ -43,6 +45,17 @@ export const CreateItemForm = ({ onCreateItem }: Props) => {
         helperText={error}
         onChange={changeTitleHandler}
         onKeyDown={createItemOnEnterHandler}
+        autoComplete="off"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            ".MuiOutlinedInput-notchedOutline": {
+              transition: `border-color .3s`,
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: (theme) => `${theme.palette.primary.light}`,
+            },
+          },
+        }}
       />
       <IconButton onClick={createItemHandler} color={"primary"}>
         <AddBoxIcon />
