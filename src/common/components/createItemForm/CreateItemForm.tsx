@@ -2,8 +2,6 @@ import IconButton from "@mui/material/IconButton"
 import AddBoxIcon from "@mui/icons-material/AddBox"
 import TextField from "@mui/material/TextField"
 import { type ChangeEvent, type KeyboardEvent, useState } from "react"
-import s from "./CreateItemForm.module.css"
-import { BorderColor } from "@mui/icons-material"
 
 type Props = {
   onCreateItem: (title: string) => void
