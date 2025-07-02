@@ -6,7 +6,7 @@ export const Home = () => {
   const [addTodolist] = useAddTodolistMutation()
   return (
     <>
-      < CreateItemForm onCreateItem={addTodolist}/>
+      <CreateItemForm onCreateItem={addTodolist} />
       <Todolists />
     </>
   )

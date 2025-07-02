@@ -1,4 +1,4 @@
-import Grid2 from "@mui/material/Grid2"
+import Grid from "@mui/material/Grid2"
 import Paper from "@mui/material/Paper"
 import { Todolist } from "./ui/Todolist"
 import { useGetTodolistsQuery } from "./api/todolistsApi"
@@ -10,13 +10,15 @@ export const Todolists = () => {
   }
   return (
     <>
-      {todolists?.map((todolist) => (
-        <Grid2 key={todolist.id}>
-          <Paper sx={{ p: "0 20px 20px 20px" }}>
-            <Todolist todolist={todolist} />
-          </Paper>
-        </Grid2>
-      ))}
+      <Grid container spacing={2} columns={18} style={{marginTop: '50px'}}>
+        {todolists?.map((todolist) => (
+          <Grid key={todolist.id} size={6}>
+            <Paper sx={{ p: "0 20px 20px 20px" }}>
+              <Todolist todolist={todolist} />
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
     </>
   )
 }
