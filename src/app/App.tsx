@@ -6,6 +6,7 @@ import { setIsLoggedInAC } from "./app-slice"
 import LinearProgress from "@mui/material/LinearProgress"
 import { ErrorSnackbar, Footer, Header } from "@/common/components"
 import { Routing } from "@/common/routing"
+import CssBaseline from "@mui/material/CssBaseline"
 
 export const App = () => {
   const [isInit, setIsInit] = useState(false)
@@ -26,6 +27,7 @@ export const App = () => {
 
   return (
     <div className="App">
+      <CssBaseline />
       <Header />
       <Routing />
       <ErrorSnackbar />
