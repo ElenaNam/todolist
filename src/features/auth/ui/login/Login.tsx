@@ -10,10 +10,10 @@ import { ResultCode } from "@/common/enums"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch"
 import { setIsLoggedInAC } from "@/app/app-slice"
 import { AUTH_TOKEN } from "@/common/constants"
-import { Inputs, loginSchema } from "../lib/schemas"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Checkbox from "@mui/material/Checkbox"
 import FormControlLabel from "@mui/material/FormControlLabel"
+import { Inputs, loginSchema } from "../../lib/schemas"
 
 export const Login = () => {
   const {
