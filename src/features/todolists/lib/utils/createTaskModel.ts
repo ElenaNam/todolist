@@ -1,4 +1,4 @@
-import { DomainTask, UpdateTaskModel } from "../../../api/tasksApi.types"
+import { DomainTask, UpdateTaskModel } from "../../api/tasksApi.types"
 
 export const createTaskModel = (task: DomainTask, domainModel: Partial<UpdateTaskModel>): UpdateTaskModel => ({
   status: task.status,

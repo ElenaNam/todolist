@@ -1,4 +1,3 @@
-import { containerSx } from "@/common/styles"
 import Container from "@mui/material/Container"
 
 export const Footer = () => {

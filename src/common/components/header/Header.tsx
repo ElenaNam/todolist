@@ -4,7 +4,6 @@ import { ResultCode } from "@/common/enums"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch"
 import { useAppSelector } from "@/common/hooks/useAppSelector"
 import { containerSx } from "@/common/styles"
-//import { getTheme } from "@/common/theme"
 import { useLogoutMutation } from "@/features/auth/api/authApi"
 import MenuIcon from "@mui/icons-material/Menu"
 import AppBar from "@mui/material/AppBar"
@@ -22,9 +21,8 @@ export const Header = () => {
   const [logout] = useLogoutMutation()
 
   const dispatch = useAppDispatch()
-  //const theme = getTheme(themeMode)
 
-   const changeMode = () => {
+  const changeMode = () => {
     dispatch(changeThemeMode({ themeMode: themeMode === "light" ? "dark" : "light" }))
   }
 
