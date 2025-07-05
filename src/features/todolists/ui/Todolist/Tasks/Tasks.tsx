@@ -4,6 +4,8 @@ import { DomainTodolist } from "../../../lib/types"
 import List from "@mui/material/List"
 import { Task } from "./Task/Task"
 import { TaskStatus } from "@/common/enums"
+import { TasksPagination } from "./TasksPagination/TasksPagination"
+import { PAGE_SIZE } from "@/common/constants"
 
 type Props = {
   todolist: DomainTodolist
@@ -12,6 +14,7 @@ type Props = {
 export const Tasks = ({ todolist }: Props) => {
   const { id, filter } = todolist
   const [page, setPage] = useState(1)
+
   const { data, isLoading } = useGetTasksQuery({ todolistId: id, params: { page } }, { refetchOnFocus: true })
 
   let filteredTasks = data?.items
@@ -32,9 +35,11 @@ export const Tasks = ({ todolist }: Props) => {
         <p>Тасок нет</p>
       ) : (
         <>
-          <List>
-            {filteredTasks?.map(task => <Task key={task.id} task={task} todolistId={id} />)}
-          </List>         
+          <List>{filteredTasks?.map((task) => <Task key={task.id} task={task} todolistId={id} />)}</List>
+
+          {data && data.totalCount > PAGE_SIZE && (
+            <TasksPagination totalCount={data.totalCount} page={page} setPage={setPage} />
+          )}
         </>
       )}
     </>
