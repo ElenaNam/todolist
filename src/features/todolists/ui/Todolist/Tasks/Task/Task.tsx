@@ -10,7 +10,6 @@ import { useUpdateTaskMutation, useRemoveTaskMutation } from "@/features/todolis
 import { DomainTask } from "@/features/todolists/api/tasksApi.types"
 import { createTaskModel } from "@/features/todolists/lib/utils"
 
-
 type Props = {
   todolistId: string
   task: DomainTask
@@ -39,10 +38,8 @@ export const Task = ({ todolistId, task }: Props) => {
 
   return (
     <ListItem sx={getListItemSx(isTaskCompleted)}>
-      <div>
-        <Checkbox checked={isTaskCompleted} onChange={changeTaskStatus} />
-        <EditableSpan value={task.title} onChange={changeTaskTitle} />
-      </div>
+      <Checkbox checked={isTaskCompleted} onChange={changeTaskStatus} />
+      <EditableSpan value={task.title} onChange={changeTaskTitle} />
       <IconButton onClick={deleteTask}>
         <DeleteIcon />
       </IconButton>
