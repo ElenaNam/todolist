@@ -8,7 +8,7 @@ import { TasksPagination } from "./TasksPagination/TasksPagination"
 import { PAGE_SIZE } from "@/common/constants"
 
 type Props = {
-  todolist: DomainTodolist
+  todolist: DomainTodolist 
 }
 
 export const Tasks = ({ todolist }: Props) => {
