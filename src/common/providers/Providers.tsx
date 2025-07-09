@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
-import { BrowserRouter } from "./BrowserRouter"
 import { ReduxProvider } from "./ReduxProvider"
 import { ThemeProvider } from "./ThemeProvider"
+import { HashRouter } from "react-router"
 
 type Props = {
   children: ReactNode
@@ -9,10 +9,10 @@ type Props = {
 
 export const Providers = ({ children }: Props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ReduxProvider>
         <ThemeProvider>{children}</ThemeProvider>
       </ReduxProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
